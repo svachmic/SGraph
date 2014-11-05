@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E002A63C19F7F2E3009C5BDE /* SEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002A63B19F7F2E3009C5BDE /* SEdge.swift */; };
+		E002A63E19F8197E009C5BDE /* SGraphStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E002A63D19F8197E009C5BDE /* SGraphStep.swift */; };
+		E02A725C1A0A629600BFE02D /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E02A725B1A0A629600BFE02D /* README.md */; };
 		E0B773A319F40E240027BF92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B773A219F40E240027BF92 /* AppDelegate.swift */; };
 		E0B773A619F40E240027BF92 /* SGraphExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E0B773A419F40E240027BF92 /* SGraphExample.xcdatamodeld */; };
 		E0B773A819F40E240027BF92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B773A719F40E240027BF92 /* ViewController.swift */; };
@@ -14,6 +17,8 @@
 		E0B773AD19F40E240027BF92 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0B773AC19F40E240027BF92 /* Images.xcassets */; };
 		E0B773B019F40E240027BF92 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B773AE19F40E240027BF92 /* LaunchScreen.xib */; };
 		E0B773BC19F40E240027BF92 /* SGraphExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B773BB19F40E240027BF92 /* SGraphExampleTests.swift */; };
+		E0B773C719F40E4C0027BF92 /* SGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B773C619F40E4C0027BF92 /* SGraph.swift */; };
+		E0B773C919F40ED20027BF92 /* SNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B773C819F40ED20027BF92 /* SNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E002A63B19F7F2E3009C5BDE /* SEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEdge.swift; sourceTree = "<group>"; };
+		E002A63D19F8197E009C5BDE /* SGraphStep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGraphStep.swift; sourceTree = "<group>"; };
+		E02A725B1A0A629600BFE02D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		E0B7739D19F40E240027BF92 /* SGraphExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SGraphExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0B773A119F40E240027BF92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0B773A219F40E240027BF92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +46,8 @@
 		E0B773B519F40E240027BF92 /* SGraphExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SGraphExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0B773BA19F40E240027BF92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0B773BB19F40E240027BF92 /* SGraphExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SGraphExampleTests.swift; sourceTree = "<group>"; };
+		E0B773C619F40E4C0027BF92 /* SGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGraph.swift; sourceTree = "<group>"; };
+		E0B773C819F40ED20027BF92 /* SNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +89,7 @@
 		E0B7739F19F40E240027BF92 /* SGraphExample */ = {
 			isa = PBXGroup;
 			children = (
+				E0B773C519F40E2F0027BF92 /* SGraph */,
 				E0B773A219F40E240027BF92 /* AppDelegate.swift */,
 				E0B773A719F40E240027BF92 /* ViewController.swift */,
 				E0B773A919F40E240027BF92 /* Main.storyboard */,
@@ -93,6 +104,7 @@
 		E0B773A019F40E240027BF92 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E02A725B1A0A629600BFE02D /* README.md */,
 				E0B773A119F40E240027BF92 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -113,6 +125,25 @@
 				E0B773BA19F40E240027BF92 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E0B773C519F40E2F0027BF92 /* SGraph */ = {
+			isa = PBXGroup;
+			children = (
+				E0B773CC19F40EF40027BF92 /* General */,
+			);
+			name = SGraph;
+			sourceTree = "<group>";
+		};
+		E0B773CC19F40EF40027BF92 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				E0B773C619F40E4C0027BF92 /* SGraph.swift */,
+				E0B773C819F40ED20027BF92 /* SNode.swift */,
+				E002A63B19F7F2E3009C5BDE /* SEdge.swift */,
+				E002A63D19F8197E009C5BDE /* SGraphStep.swift */,
+			);
+			name = General;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,8 +246,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E002A63C19F7F2E3009C5BDE /* SEdge.swift in Sources */,
+				E0B773C719F40E4C0027BF92 /* SGraph.swift in Sources */,
+				E0B773C919F40ED20027BF92 /* SNode.swift in Sources */,
 				E0B773A819F40E240027BF92 /* ViewController.swift in Sources */,
+				E002A63E19F8197E009C5BDE /* SGraphStep.swift in Sources */,
 				E0B773A319F40E240027BF92 /* AppDelegate.swift in Sources */,
+				E02A725C1A0A629600BFE02D /* README.md in Sources */,
 				E0B773A619F40E240027BF92 /* SGraphExample.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +445,7 @@
 				E0B773C119F40E240027BF92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E0B773C219F40E240027BF92 /* Build configuration list for PBXNativeTarget "SGraphExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +454,7 @@
 				E0B773C419F40E240027BF92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
