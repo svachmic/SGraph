@@ -83,6 +83,14 @@ class SGraph : NSObject {
     }
     */
     
+    func minimumSpanningTree() -> SGraph? {
+        return nil
+    }
+    
+    func eulerianPath() -> SGraph? {
+        return nil
+    }
+    
     func shortestPath(from:SNode, to:SNode) -> Array<SGraphStep>? {
         var keys:NSMutableSet = NSMutableSet(set: self.nodes)
         var distances = [Int](count: keys.count, repeatedValue: NSIntegerMax)
