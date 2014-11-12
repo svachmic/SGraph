@@ -67,7 +67,6 @@ class SGraph : NSObject {
         return NSIntegerMax
     }
     
-    /*
     func dfs(start: SNode) {
         start.isTraversed = true;
         
@@ -81,7 +80,6 @@ class SGraph : NSObject {
         
         start.isTraversed = false
     }
-    */
     
     func minimumSpanningTree() -> SGraph? {
         return nil
