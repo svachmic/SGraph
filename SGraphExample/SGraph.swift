@@ -8,6 +8,16 @@
 
 import Foundation
 
+struct SGraphStep {
+    var from:SNode
+    var to:SNode
+    var length:Int
+    
+    var description : String {
+        return "\n From \(from.nodeID) leading to \(to.nodeID) with length \(length)"
+    }
+}
+
 class SGraph : NSObject {
     var root: SNode?
     var edges: Dictionary<SNode, [SEdge]> = Dictionary<SNode, [SEdge]>()
@@ -99,12 +109,9 @@ class SGraph : NSObject {
                 break
             }
             
-            var step: SGraphStep = SGraphStep()
-            
-            step.from = nodeForID(previous[previousIndex])
-            step.to = nodeForID(previousIndex)
-            
-            step.length = distances[edgeLengthFor(step.from!, to: step.to!)]
+            let from = nodeForID(previous[previousIndex])
+            let to = nodeForID(previousIndex)
+            var step = SGraphStep(from: from!, to: to!, length: distances[edgeLengthFor(from!, to: to!)])
             steps!.insert(step, atIndex: 0)
             
             previousIndex = previous[previousIndex]
