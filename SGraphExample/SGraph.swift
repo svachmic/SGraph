@@ -66,58 +66,48 @@ class SGraph : NSObject {
     
     func shortestPath(#from:SNode, to:SNode) -> [SGraphStep]? {
         var keys:NSMutableSet = NSMutableSet(set: self.nodes)
-        var distances = [Int](count: keys.count, repeatedValue: NSIntegerMax)
-        var previous = [Int](count: keys.count, repeatedValue: NSIntegerMax)
+        var distances = [Int](count: keys.count, repeatedValue: Int.max)
+        var previous = [Int](count: keys.count, repeatedValue: Int.max)
         distances[from.nodeID] = 0
         
         var u = from
         
         while keys.count > 0 {
-            var array = edges[u]
-            
-            for neighbor in array! {
-                let edge = neighbor
-                var distance = distances[u.nodeID] + edge.length
+            self.edges[u]?.map({ (edge: SEdge) -> Void in
+                let distance = distances[u.nodeID] + edge.length
                 if distance < distances[edge.destinationNode.nodeID] {
                     distances[edge.destinationNode.nodeID] = distance
                     previous[edge.destinationNode.nodeID] = u.nodeID
                 }
-            }
+            })
             
             keys.removeObject(u)
             
             if keys.count > 0 {
-                var smallestCandidate: SNode = keys.allObjects[0] as SNode
-                for key in keys {
-                    let vertex = key as SNode
-                    
-                    if distances[vertex.nodeID] < distances[smallestCandidate.nodeID] {
-                        smallestCandidate = vertex
-                    }
+                u = keys.allObjects.reduce(keys.allObjects[0] as SNode) {
+                    return distances[$0.nodeID] < distances[$1.nodeID] ? ($0 as SNode) : ($1 as SNode)
                 }
-                u = smallestCandidate
             }
         }
         
         var steps:[SGraphStep]? = [SGraphStep]()
+        var previousIndex = to.nodeID
         
-        var previousIdx = to.nodeID
-        
-        while previousIdx != from.nodeID {
-            if previous[previousIdx] == NSIntegerMax {
+        while previousIndex != from.nodeID {
+            if previous[previousIndex] == Int.max {
                 steps = nil
                 break
             }
             
-            var step:SGraphStep = SGraphStep()
+            var step: SGraphStep = SGraphStep()
             
-            step.from = nodeForID(previous[previousIdx])
-            step.to = nodeForID(previousIdx)
+            step.from = nodeForID(previous[previousIndex])
+            step.to = nodeForID(previousIndex)
             
             step.length = distances[edgeLengthFor(step.from!, to: step.to!)]
             steps!.insert(step, atIndex: 0)
             
-            previousIdx = previous[previousIdx]
+            previousIndex = previous[previousIndex]
         }
         
         return steps
