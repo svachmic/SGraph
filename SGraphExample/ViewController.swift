@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var graph:SGraph?
+    var graph:SGraph!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,15 +32,15 @@ class ViewController: UIViewController {
         
         // lonely node
         var node7 = SNode(nodeId: 6)
-        self.graph!.addNode(node7)
+        self.graph.addNode(node7)
         
-        self.graph!.addBidirectionalEdge(node1, to: node2)
-        self.graph!.addBidirectionalEdge(node1, to: node3)
+        self.graph.addBidirectionalEdge(from: node1, to: node2)
+        self.graph.addBidirectionalEdge(from: node1, to: node3)
         
-        self.graph!.addBidirectionalEdge(node2, to: node4)
-        self.graph!.addBidirectionalEdge(node4, to: node5)
+        self.graph.addBidirectionalEdge(from: node2, to: node4)
+        self.graph.addBidirectionalEdge(from: node4, to: node5)
         
-        self.graph!.addBidirectionalEdge(node3, to: node6)
+        self.graph.addBidirectionalEdge(from: node3, to: node6)
         
         self.findPath(node1, to: node6)
         self.findPath(node4, to: node1)
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     }
     
     func findPath(from:SNode, to:SNode) {
-        if let trail = self.graph!.shortestPath(from, to:to) {
+        if let trail = self.graph.shortestPath(from: from, to:to) {
             NSLog(trail.description)
         } else {
             NSLog("No route leading out")

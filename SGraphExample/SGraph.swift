@@ -10,24 +10,26 @@ import Foundation
 
 class SGraph : NSObject {
     var root: SNode?
-    var edges: Dictionary<SNode, NSMutableArray> = Dictionary<SNode, NSMutableArray>()
+    var edges: Dictionary<SNode, [SEdge]> = Dictionary<SNode, [SEdge]>()
     var nodes:NSMutableSet = NSMutableSet()
     
     func addEdge(from: SNode, to: SNode) {
-        root = root == nil ? from : root
+        root = root ?? from
         
         var newEdge = SEdge(destination: to, lng: 1, edgeId: 42)
         
-        if let toArr:NSMutableArray = edges[from] {
-            toArr.addObject(newEdge)
+        if let toArr = edges[from] {
+            var toArr2 = toArr
+            toArr2.append(newEdge)
+            edges[from] = toArr2
         } else {
-            var toArrNew = NSMutableArray()
-            toArrNew.addObject(newEdge)
+            var toArrNew = [SEdge]()
+            toArrNew.append(newEdge)
             edges[from] = toArrNew
         }
     }
     
-    func addBidirectionalEdge(from: SNode, to: SNode) {
+    func addBidirectionalEdge(#from: SNode, to: SNode) {
         addEdge(from, to: to)
         addEdge(to, to: from)
 
@@ -39,7 +41,7 @@ class SGraph : NSObject {
         nodes.addObject(node)
         
         if edges[node] == nil {
-            var toArrNew = NSMutableArray()
+            var toArrNew = [SEdge]()
             edges[node] = toArrNew
         }
     }
@@ -67,20 +69,6 @@ class SGraph : NSObject {
         return NSIntegerMax
     }
     
-    func dfs(start: SNode) {
-        start.isTraversed = true;
-        
-        if let children = edges[start] {
-            for child in children {
-                dfs(child as SNode)
-            }
-        } else {
-            NSLog("No more children");
-        }
-        
-        start.isTraversed = false
-    }
-    
     func minimumSpanningTree() -> SGraph? {
         return nil
     }
@@ -89,7 +77,7 @@ class SGraph : NSObject {
         return nil
     }
     
-    func shortestPath(from:SNode, to:SNode) -> Array<SGraphStep>? {
+    func shortestPath(#from:SNode, to:SNode) -> [SGraphStep]? {
         var keys:NSMutableSet = NSMutableSet(set: self.nodes)
         var distances = [Int](count: keys.count, repeatedValue: NSIntegerMax)
         var previous = [Int](count: keys.count, repeatedValue: NSIntegerMax)
@@ -101,17 +89,18 @@ class SGraph : NSObject {
             var array = edges[u]
             
             for neighbor in array! {
-                let edge = neighbor as SEdge
+                let edge = neighbor
                 var distance = distances[u.nodeID] + edge.length
                 if distance < distances[edge.destinationNode.nodeID] {
                     distances[edge.destinationNode.nodeID] = distance
                     previous[edge.destinationNode.nodeID] = u.nodeID
                 }
             }
+            
             keys.removeObject(u)
             
             if keys.count > 0 {
-                var smallestCandidate:SNode = keys.allObjects[0] as SNode
+                var smallestCandidate: SNode = keys.allObjects[0] as SNode
                 for key in keys {
                     let vertex = key as SNode
                     
@@ -123,7 +112,7 @@ class SGraph : NSObject {
             }
         }
         
-        var steps:[SGraphStep]? = Array<SGraphStep>()
+        var steps:[SGraphStep]? = [SGraphStep]()
         
         var previousIdx = to.nodeID
         
