@@ -48,10 +48,11 @@ class ViewController: UIViewController {
     }
     
     func findPath(from:SNode, to:SNode) {
-        if let trail = self.graph.shortestPath(from: from, to:to) {
-            NSLog(trail.description)
+        if let trail = self.graph.shortestPath(from: from, to: to) {
+            trail.map({ println("\($0.description)") })
+            println()
         } else {
-            NSLog("No route leading out")
+            println("No route leading out")
         }
     }
 }

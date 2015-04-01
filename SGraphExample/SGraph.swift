@@ -13,8 +13,8 @@ struct SGraphStep {
     var to:SNode
     var length:Int
     
-    var description : String {
-        return "\n From \(from.nodeID) leading to \(to.nodeID) with length \(length)"
+    var description: String {
+        return "From \(from.nodeID) leading to \(to.nodeID) with length \(length)"
     }
 }
 
