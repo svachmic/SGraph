@@ -13,25 +13,25 @@ class SGraph : NSObject {
     var edges: Dictionary<SNode, [SEdge]> = Dictionary<SNode, [SEdge]>()
     var nodes:NSMutableSet = NSMutableSet()
     
-    func addEdge(from: SNode, to: SNode) {
+    func addEdge(#from: SNode, to: SNode) {
         root = root ?? from
         
         var newEdge = SEdge(destination: to, lng: 1, edgeId: 42)
         
-        if let toArr = edges[from] {
-            var toArr2 = toArr
-            toArr2.append(newEdge)
-            edges[from] = toArr2
+        if let destinations = edges[from] {
+            var tmp = destinations
+            tmp.append(newEdge)
+            edges[from] = tmp
         } else {
-            var toArrNew = [SEdge]()
-            toArrNew.append(newEdge)
-            edges[from] = toArrNew
+            var destinations = [SEdge]()
+            destinations.append(newEdge)
+            edges[from] = destinations
         }
     }
     
     func addBidirectionalEdge(#from: SNode, to: SNode) {
-        addEdge(from, to: to)
-        addEdge(to, to: from)
+        addEdge(from: from, to: to)
+        addEdge(from: to, to: from)
 
         self.addNode(from)
         self.addNode(to)
@@ -41,32 +41,19 @@ class SGraph : NSObject {
         nodes.addObject(node)
         
         if edges[node] == nil {
-            var toArrNew = [SEdge]()
-            edges[node] = toArrNew
+            var destinations = [SEdge]()
+            edges[node] = destinations
         }
     }
     
-    func nodeForID(nodeID:Int)->SNode? {
-        for key in edges.keys {
-            if key.nodeID == nodeID {
-                return key
-            }
-        }
-        return nil
+    func nodeForID(nodeID: Int) -> SNode? {
+        let result = filter(edges.keys, { $0.nodeID == nodeID })
+        return result.count == 0 ? nil : result[0]
     }
     
     func edgeLengthFor(from:SNode, to:SNode) -> Int {
-        var array = edges[from]
-        
-        for neighbor in array! {
-            let edge = neighbor as SEdge
-            
-            if edge.destinationNode.nodeID == to.nodeID {
-                return edge.length
-            }
-        }
-        
-        return NSIntegerMax
+        let result = filter(edges[from]!, { $0.destinationNode.nodeID == to.nodeID })
+        return result.count == 0 ? Int.max : result[0].length
     }
     
     func minimumSpanningTree() -> SGraph? {
