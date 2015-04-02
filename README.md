@@ -1,3 +1,7 @@
 #SwiftGraph#
 
-Graph algorithm implemented in pure Swift - Apple's new language.
+Graph algorithms implemented in pure Swift (Apple's new language).
+
+##LICENSE##
+
+TBD
