@@ -8,7 +8,7 @@ Graph algorithms implemented in pure Swift (Apple's new language).
 ##TODO##
 - Kruskall
 - Fleury
-- Edmond
+- Edmonds
 
 ##License##
 
