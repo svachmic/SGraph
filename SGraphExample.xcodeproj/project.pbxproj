@@ -44,8 +44,8 @@
 		E0B773AC19F40E240027BF92 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E0B773AF19F40E240027BF92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E0B773B519F40E240027BF92 /* SGraphExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SGraphExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E0B773BA19F40E240027BF92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E0B773BB19F40E240027BF92 /* SGraphExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SGraphExampleTests.swift; sourceTree = "<group>"; };
+		E0B773BA19F40E240027BF92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../SGraphExample/SGraphExampleTests/Info.plist; sourceTree = "<group>"; };
+		E0B773BB19F40E240027BF92 /* SGraphExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SGraphExampleTests.swift; path = ../SGraphExample/SGraphExampleTests/SGraphExampleTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
