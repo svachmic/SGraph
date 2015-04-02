@@ -2,6 +2,14 @@
 
 Graph algorithms implemented in pure Swift (Apple's new language).
 
-##LICENSE##
+##Implemented algorithms##
+- Dijkstra
+
+##TODO##
+- Kruskall
+- Fleury
+- Edmond
+
+##License##
 
 TBD
