@@ -9,6 +9,7 @@ Graph algorithms implemented in pure Swift (Apple's new language).
 - Kruskall
 - Fleury
 - Edmonds
+- Tarjan
 
 ##License##
 
