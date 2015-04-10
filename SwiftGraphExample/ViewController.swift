@@ -1,21 +1,21 @@
 //
 //  ViewController.swift
-//  SGraphExample
+//  SwiftGraphExample
 //
-//  Created by Michal Švácha on 19/10/14.
-//  Copyright (c) 2014 Michal Švácha. All rights reserved.
+//  Created by Michal Švácha on 10/04/15.
+//  Copyright (c) 2015 Michal Švácha. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
     var graph:SGraph!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         testShortestPath()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0600"
+   LastUpgradeVersion = "0620"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E0B7739C19F40E240027BF92"
-               BuildableName = "SGraphExample.app"
-               BlueprintName = "SGraphExample"
-               ReferencedContainer = "container:SGraphExample.xcodeproj">
+               BlueprintIdentifier = "E05679401AD7EA7900BB5D63"
+               BuildableName = "SwiftGraphExample.app"
+               BlueprintName = "SwiftGraphExample"
+               ReferencedContainer = "container:SwiftGraphExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E0B773B419F40E240027BF92"
-               BuildableName = "SGraphExampleTests.xctest"
-               BlueprintName = "SGraphExampleTests"
-               ReferencedContainer = "container:SGraphExample.xcodeproj">
+               BlueprintIdentifier = "E05679551AD7EA7900BB5D63"
+               BuildableName = "SwiftGraphExampleTests.xctest"
+               BlueprintName = "SwiftGraphExampleTests"
+               ReferencedContainer = "container:SwiftGraphExample.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E05679A31AD7EAE400BB5D63"
+               BuildableName = "SwiftGraphTests.xctest"
+               BlueprintName = "SwiftGraphTests"
+               ReferencedContainer = "container:SwiftGraphExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,20 +60,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E0B773B419F40E240027BF92"
-               BuildableName = "SGraphExampleTests.xctest"
-               BlueprintName = "SGraphExampleTests"
-               ReferencedContainer = "container:SGraphExample.xcodeproj">
+               BlueprintIdentifier = "E05679551AD7EA7900BB5D63"
+               BuildableName = "SwiftGraphExampleTests.xctest"
+               BlueprintName = "SwiftGraphExampleTests"
+               ReferencedContainer = "container:SwiftGraphExample.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E05679A31AD7EAE400BB5D63"
+               BuildableName = "SwiftGraphTests.xctest"
+               BlueprintName = "SwiftGraphTests"
+               ReferencedContainer = "container:SwiftGraphExample.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E0B7739C19F40E240027BF92"
-            BuildableName = "SGraphExample.app"
-            BlueprintName = "SGraphExample"
-            ReferencedContainer = "container:SGraphExample.xcodeproj">
+            BlueprintIdentifier = "E05679401AD7EA7900BB5D63"
+            BuildableName = "SwiftGraphExample.app"
+            BlueprintName = "SwiftGraphExample"
+            ReferencedContainer = "container:SwiftGraphExample.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -72,13 +96,14 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E0B7739C19F40E240027BF92"
-            BuildableName = "SGraphExample.app"
-            BlueprintName = "SGraphExample"
-            ReferencedContainer = "container:SGraphExample.xcodeproj">
+            BlueprintIdentifier = "E05679401AD7EA7900BB5D63"
+            BuildableName = "SwiftGraphExample.app"
+            BlueprintName = "SwiftGraphExample"
+            ReferencedContainer = "container:SwiftGraphExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -90,13 +115,14 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E0B7739C19F40E240027BF92"
-            BuildableName = "SGraphExample.app"
-            BlueprintName = "SGraphExample"
-            ReferencedContainer = "container:SGraphExample.xcodeproj">
+            BlueprintIdentifier = "E05679401AD7EA7900BB5D63"
+            BuildableName = "SwiftGraphExample.app"
+            BlueprintName = "SwiftGraphExample"
+            ReferencedContainer = "container:SwiftGraphExample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

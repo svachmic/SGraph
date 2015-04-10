@@ -4,7 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>SGraphExample.xcscheme</key>
+		<key>SwiftGraph.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>SwiftGraphExample.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +17,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>E0B7739C19F40E240027BF92</key>
+		<key>E05679401AD7EA7900BB5D63</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E0B773B419F40E240027BF92</key>
+		<key>E05679551AD7EA7900BB5D63</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E05679991AD7EAE400BB5D63</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E05679A31AD7EAE400BB5D63</key>
 		<dict>
 			<key>primary</key>
 			<true/>
