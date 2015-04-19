@@ -27,5 +27,4 @@ class SwiftGraphTests: XCTestCase {
         self.measureBlock() {
         }
     }
-    
 }
