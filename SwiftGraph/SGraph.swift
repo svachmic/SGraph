@@ -74,6 +74,13 @@ class SGraph : NSObject {
         return nil
     }
     
+    /**
+    Finds the shortest path between given nodes.
+    
+    :param: from Starting node.
+    :param: to End node.
+    :returns: Optional array with SGraphStep objects. Nil if path has not been found.
+    */
     func shortestPath(#from:SNode, to:SNode) -> [SGraphStep]? {
         var keys:NSMutableSet = NSMutableSet(set: self.nodes)
         var distances = [Int](count: keys.count, repeatedValue: Int.max)
