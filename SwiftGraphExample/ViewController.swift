@@ -42,8 +42,11 @@ class ViewController: UIViewController {
         
         self.graph.addBidirectionalEdge(from: node3, to: node6)
         
+        // 1. test
         self.findPath(node1, to: node6)
+        // 2. test
         self.findPath(node4, to: node1)
+        // 3. test
         self.findPath(node1, to: node7)
     }
     
