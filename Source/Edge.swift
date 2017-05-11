@@ -8,10 +8,11 @@
 
 import Foundation
 
-class Edge {
-    var destination: Node
-    var length: Int
-    var edgeID: Int
+/// Base class for an edge in a graph.
+public class Edge {
+    public var destination: Node
+    public var length: Int
+    public var edgeID: Int
     
     init(destination: Node, length: Int, edgeID: Int) {
         self.destination = destination

@@ -8,22 +8,25 @@
 
 import Foundation
 
-class Node: Hashable, Equatable {
-    var nodeID: Int
+/// Base class for a node (= vertex) in a graph.
+public class Node: Hashable, Equatable {
+    public var nodeID: Int
     
-    init(nodeId: Int) {
-        nodeID = nodeId
+    public init(nodeID: Int) {
+        self.nodeID = nodeID
     }
     
-    var hashValue: Int {
+    public var description: String {
+        return "\(nodeID)"
+    }
+    
+    // MARK: - Hashable + Equatable methods
+    
+    public var hashValue: Int {
         return "\(nodeID)".hashValue
     }
     
-    static func == (lhs: Node, rhs: Node) -> Bool {
+    public static func == (lhs: Node, rhs: Node) -> Bool {
         return lhs.hashValue == rhs.hashValue
-    }
-    
-    var description: String {
-        return "\(nodeID)"
     }
 }

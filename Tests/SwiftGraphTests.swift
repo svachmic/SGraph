@@ -16,12 +16,12 @@ class SwiftGraphTests: XCTestCase {
         
         graph = Graph()
         
-        let node1 = Node(nodeId: 0)
-        let node2 = Node(nodeId: 1)
-        let node3 = Node(nodeId: 2)
-        let node4 = Node(nodeId: 3)
-        let node5 = Node(nodeId: 4)
-        let node6 = Node(nodeId: 5)
+        let node1 = Node(nodeID: 0)
+        let node2 = Node(nodeID: 1)
+        let node3 = Node(nodeID: 2)
+        let node4 = Node(nodeID: 3)
+        let node5 = Node(nodeID: 4)
+        let node6 = Node(nodeID: 5)
         
         graph.addBidirectionalEdge(from: node1, to: node2)
         graph.addBidirectionalEdge(from: node1, to: node3)
@@ -30,7 +30,7 @@ class SwiftGraphTests: XCTestCase {
         graph.addBidirectionalEdge(from: node3, to: node6)
         
         // lonely node
-        let node7 = Node(nodeId: 6)
+        let node7 = Node(nodeID: 6)
         graph.add(node: node7)
     }
     
