@@ -23,7 +23,7 @@ class Graph {
     var edges = [Node: [Edge]]()
     var nodes: Set<Node> = []
     
-    func addEdge(from: Node, to: Node, edgeID: Int? = nil) {
+    public func addEdge(from: Node, to: Node, edgeID: Int? = nil) {
         root = root ?? from
         
         let newEdge = Edge(destination: to, length: 1, edgeID: edgeID ?? edges.count)
@@ -35,7 +35,7 @@ class Graph {
         }
     }
     
-    func addBidirectionalEdge(from: Node, to: Node) {
+    public func addBidirectionalEdge(from: Node, to: Node) {
         let edgeID = edges.count
         addEdge(from: from, to: to, edgeID: edgeID)
         addEdge(from: to, to: from, edgeID: edgeID)
@@ -44,7 +44,7 @@ class Graph {
         add(node: to)
     }
     
-    func add(node: Node) {
+    public func add(node: Node) {
         nodes.insert(node)
         
         if edges[node] == nil {
@@ -52,7 +52,7 @@ class Graph {
         }
     }
     
-    func node(with nodeID: Int) -> Node? {
+    public func node(with nodeID: Int) -> Node? {
         for (key, _) in edges where key.nodeID == nodeID {
             return key
         }
@@ -60,17 +60,9 @@ class Graph {
         return nil
     }
     
-    func edgeLength(from: Node, to: Node) -> Int {
+    private func edgeLength(from: Node, to: Node) -> Int {
         let result = edges[from]!.filter({ $0.destination.nodeID == to.nodeID })
         return result.count == 0 ? Int.max : result[0].length
-    }
-    
-    func minimumSpanningTree() -> Graph? {
-        return nil
-    }
-    
-    func eulerianPath() -> Graph? {
-        return nil
     }
     
     /// Finds the shortest path between given nodes.
@@ -78,8 +70,8 @@ class Graph {
     /// - Parameter from: Starting node.
     /// - Parameter to: End node.
     /// - Returns: Optional array with SGraphStep objects. Nil if path has not been found.
-    func shortestPath(from: Node, to: Node) -> [GraphStep]? {
-        let keys = NSMutableSet(set: self.nodes)
+    public func shortestPath(from: Node, to: Node) -> [GraphStep]? {
+        var keys = Set<Node>(self.nodes)
         var distances = [Int](repeating: Int.max, count: keys.count)
         var previous = [Int](repeating: Int.max, count: keys.count)
         
@@ -87,7 +79,6 @@ class Graph {
         var u = from
         
         while keys.count > 0 {
-            
             for edge in self.edges[u]! {
                 let distance = distances[u.nodeID] + edge.length
                 if distance < distances[edge.destination.nodeID] {
@@ -99,8 +90,8 @@ class Graph {
             keys.remove(u)
             
             if keys.count > 0 {
-                u = keys.allObjects.reduce(keys.allObjects[0] as! Node) {
-                    return distances[$0.nodeID] < distances[($1 as! Node).nodeID] ? ($0 as Node) : ($1 as! Node)
+                u = keys.reduce(keys.first!) {
+                    return distances[$0.nodeID] < distances[$1.nodeID] ? $0 : $1
                 }
             }
         }
