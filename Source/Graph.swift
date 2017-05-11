@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct SGraphStep {
-    var from: SNode
-    var to: SNode
+struct GraphStep {
+    var from: Node
+    var to: Node
     var length: Int
     
     var description: String {
@@ -18,15 +18,15 @@ struct SGraphStep {
     }
 }
 
-class SGraph {
-    var root: SNode?
-    var edges = [SNode : [SEdge]]()
-    var nodes: Set<SNode> = []
+class Graph {
+    var root: Node?
+    var edges = [Node : [Edge]]()
+    var nodes: Set<Node> = []
     
-    func addEdge(from: SNode, to: SNode, edgeID: Int? = nil) {
+    func addEdge(from: Node, to: Node, edgeID: Int? = nil) {
         root = root ?? from
         
-        let newEdge = SEdge(destination: to, length: 1, edgeID: edgeID ?? edges.count)
+        let newEdge = Edge(destination: to, length: 1, edgeID: edgeID ?? edges.count)
         
         if let destinations = edges[from] {
             edges[from] = destinations + [newEdge]
@@ -35,7 +35,7 @@ class SGraph {
         }
     }
     
-    func addBidirectionalEdge(from: SNode, to: SNode) {
+    func addBidirectionalEdge(from: Node, to: Node) {
         let edgeID = edges.count
         addEdge(from: from, to: to, edgeID: edgeID)
         addEdge(from: to, to: from, edgeID: edgeID)
@@ -44,7 +44,7 @@ class SGraph {
         add(node: to)
     }
     
-    func add(node: SNode) {
+    func add(node: Node) {
         nodes.insert(node)
         
         if edges[node] == nil {
@@ -52,7 +52,7 @@ class SGraph {
         }
     }
     
-    func node(with nodeID: Int) -> SNode? {
+    func node(with nodeID: Int) -> Node? {
         for (key, _) in edges {
             if key.nodeID == nodeID {
                 return key
@@ -62,16 +62,16 @@ class SGraph {
         return nil
     }
     
-    func edgeLength(from:SNode, to:SNode) -> Int {
+    func edgeLength(from: Node, to: Node) -> Int {
         let result = edges[from]!.filter({ $0.destination.nodeID == to.nodeID })
         return result.count == 0 ? Int.max : result[0].length
     }
     
-    func minimumSpanningTree() -> SGraph? {
+    func minimumSpanningTree() -> Graph? {
         return nil
     }
     
-    func eulerianPath() -> SGraph? {
+    func eulerianPath() -> Graph? {
         return nil
     }
     
@@ -81,7 +81,7 @@ class SGraph {
     /// - Parameter from: Starting node.
     /// - Parameter to: End node.
     /// - Returns: Optional array with SGraphStep objects. Nil if path has not been found.
-    func shortestPath(from:SNode, to:SNode) -> [SGraphStep]? {
+    func shortestPath(from: Node, to: Node) -> [GraphStep]? {
         let keys = NSMutableSet(set: self.nodes)
         var distances = [Int](repeating: Int.max, count: keys.count)
         var previous = [Int](repeating: Int.max, count: keys.count)
@@ -112,13 +112,13 @@ class SGraph {
             keys.remove(u)
             
             if keys.count > 0 {
-                u = keys.allObjects.reduce(keys.allObjects[0] as! SNode) {
-                    return distances[$0.nodeID] < distances[($1 as! SNode).nodeID] ? ($0 as SNode) : ($1 as! SNode)
+                u = keys.allObjects.reduce(keys.allObjects[0] as! Node) {
+                    return distances[$0.nodeID] < distances[($1 as! Node).nodeID] ? ($0 as Node) : ($1 as! Node)
                 }
             }
         }
         
-        var steps: [SGraphStep]? = []
+        var steps: [GraphStep]? = []
         var previousIndex = to.nodeID
         
         while previousIndex != from.nodeID {
@@ -129,7 +129,7 @@ class SGraph {
             
             let from = node(with: previous[previousIndex])
             let to = node(with: previousIndex)
-            let step = SGraphStep(
+            let step = GraphStep(
                 from: from!,
                 to: to!,
                 length: distances[edgeLength(from: from!, to: to!)])

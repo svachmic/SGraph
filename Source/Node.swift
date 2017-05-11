@@ -8,11 +8,11 @@
 
 import Foundation
 
-class SNode: Hashable, Equatable {
+class Node: Hashable, Equatable {
     var isTraversed:Bool = false
     var nodeID: Int
     
-    init(nodeId:Int) {
+    init(nodeId: Int) {
         nodeID = nodeId
     }
     
@@ -22,7 +22,7 @@ class SNode: Hashable, Equatable {
         }
     }
     
-    static func ==(lhs: SNode, rhs: SNode) -> Bool {
+    static func ==(lhs: Node, rhs: Node) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
     

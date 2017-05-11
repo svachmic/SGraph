@@ -8,12 +8,12 @@
 
 import Foundation
 
-class SEdge {
-    var destination: SNode
+class Edge {
+    var destination: Node
     var length: Int
     var edgeID: Int
     
-    init(destination: SNode, length: Int, edgeID: Int) {
+    init(destination: Node, length: Int, edgeID: Int) {
         self.destination = destination
         self.length = length
         self.edgeID = edgeID
