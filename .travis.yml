@@ -11,4 +11,4 @@ before_install:
 script:
   - swiftlint
   - set -o pipefail && xcodebuild test -workspace Example/SwiftGraphExample.xcworkspace -scheme SwiftGraphExample -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3' | xcpretty
-  - pod lib lint
+  - pod lib lint SwiftGraph.podspec
