@@ -23,15 +23,15 @@ class ViewController: UIViewController {
     func testShortestPath() {
         self.graph = SGraph()
         
-        var node1 = SNode(nodeId: 0)
-        var node2 = SNode(nodeId: 1)
-        var node3 = SNode(nodeId: 2)
-        var node4 = SNode(nodeId: 3)
-        var node5 = SNode(nodeId: 4)
-        var node6 = SNode(nodeId: 5)
+        let node1 = SNode(nodeId: 0)
+        let node2 = SNode(nodeId: 1)
+        let node3 = SNode(nodeId: 2)
+        let node4 = SNode(nodeId: 3)
+        let node5 = SNode(nodeId: 4)
+        let node6 = SNode(nodeId: 5)
         
         // lonely node
-        var node7 = SNode(nodeId: 6)
+        let node7 = SNode(nodeId: 6)
         self.graph.addNode(node7)
         
         self.graph.addBidirectionalEdge(from: node1, to: node2)
@@ -50,12 +50,12 @@ class ViewController: UIViewController {
         self.findPath(node1, to: node7)
     }
     
-    func findPath(from:SNode, to:SNode) {
+    func findPath(_ from:SNode, to:SNode) {
         if let trail = self.graph.shortestPath(from: from, to: to) {
-            trail.map({ println("\($0.description)") })
-            println()
+            _ = trail.map({ print("\($0.description)") })
+            print()
         } else {
-            println("No route leading out")
+            print("No route leading out")
         }
     }
 }

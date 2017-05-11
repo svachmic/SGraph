@@ -18,15 +18,15 @@ struct SGraphStep {
     }
 }
 
-class SGraph : NSObject {
+class SGraph {
     var root: SNode?
     var edges: Dictionary<SNode, [SEdge]> = Dictionary<SNode, [SEdge]>()
     var nodes:NSMutableSet = NSMutableSet()
     
-    func addEdge(#from: SNode, to: SNode) {
+    func addEdge(from: SNode, to: SNode) {
         root = root ?? from
         
-        var newEdge = SEdge(destination: to, lng: 1, edgeId: 42)
+        let newEdge = SEdge(destination: to, lng: 1, edgeId: 42)
         
         if let destinations = edges[from] {
             var tmp = destinations
@@ -39,7 +39,7 @@ class SGraph : NSObject {
         }
     }
     
-    func addBidirectionalEdge(#from: SNode, to: SNode) {
+    func addBidirectionalEdge(from: SNode, to: SNode) {
         addEdge(from: from, to: to)
         addEdge(from: to, to: from)
 
@@ -47,22 +47,27 @@ class SGraph : NSObject {
         self.addNode(to)
     }
     
-    func addNode(node:SNode) {
-        nodes.addObject(node)
+    func addNode(_ node:SNode) {
+        nodes.add(node)
         
         if edges[node] == nil {
-            var destinations = [SEdge]()
+            let destinations = [SEdge]()
             edges[node] = destinations
         }
     }
     
-    func nodeForID(nodeID: Int) -> SNode? {
-        let result = filter(edges.keys, { $0.nodeID == nodeID })
-        return result.count == 0 ? nil : result[0]
+    func nodeForID(_ nodeID: Int) -> SNode? {
+        for (key, _) in edges {
+            if key.nodeID == nodeID {
+                return key
+            }
+        }
+        
+        return nil
     }
     
-    func edgeLengthFor(from:SNode, to:SNode) -> Int {
-        let result = filter(edges[from]!, { $0.destinationNode.nodeID == to.nodeID })
+    func edgeLengthFor(_ from:SNode, to:SNode) -> Int {
+        let result = edges[from]!.filter({ $0.destinationNode.nodeID == to.nodeID })
         return result.count == 0 ? Int.max : result[0].length
     }
     
@@ -81,16 +86,16 @@ class SGraph : NSObject {
     :param: to End node.
     :returns: Optional array with SGraphStep objects. Nil if path has not been found.
     */
-    func shortestPath(#from:SNode, to:SNode) -> [SGraphStep]? {
-        var keys:NSMutableSet = NSMutableSet(set: self.nodes)
-        var distances = [Int](count: keys.count, repeatedValue: Int.max)
-        var previous = [Int](count: keys.count, repeatedValue: Int.max)
+    func shortestPath(from:SNode, to:SNode) -> [SGraphStep]? {
+        let keys: NSMutableSet = NSMutableSet(set: self.nodes)
+        var distances = [Int](repeating: Int.max, count: keys.count)
+        var previous = [Int](repeating: Int.max, count: keys.count)
         distances[from.nodeID] = 0
         
         var u = from
         
         while keys.count > 0 {
-            self.edges[u]?.map({ (edge: SEdge) -> Void in
+            _ = self.edges[u]?.map({ (edge: SEdge) -> Void in
                 let distance = distances[u.nodeID] + edge.length
                 if distance < distances[edge.destinationNode.nodeID] {
                     distances[edge.destinationNode.nodeID] = distance
@@ -98,11 +103,11 @@ class SGraph : NSObject {
                 }
             })
             
-            keys.removeObject(u)
+            keys.remove(u)
             
             if keys.count > 0 {
-                u = keys.allObjects.reduce(keys.allObjects[0] as SNode) {
-                    return distances[$0.nodeID] < distances[$1.nodeID] ? ($0 as SNode) : ($1 as SNode)
+                u = keys.allObjects.reduce(keys.allObjects[0] as! SNode) {
+                    return distances[$0.nodeID] < distances[($1 as! SNode).nodeID] ? ($0 as SNode) : ($1 as! SNode)
                 }
             }
         }
@@ -118,8 +123,8 @@ class SGraph : NSObject {
             
             let from = nodeForID(previous[previousIndex])
             let to = nodeForID(previousIndex)
-            var step = SGraphStep(from: from!, to: to!, length: distances[edgeLengthFor(from!, to: to!)])
-            steps!.insert(step, atIndex: 0)
+            let step = SGraphStep(from: from!, to: to!, length: distances[edgeLengthFor(from!, to: to!)])
+            steps!.insert(step, at: 0)
             
             previousIndex = previous[previousIndex]
         }
