@@ -1,5 +1,4 @@
 language: objective-c
  
 script:
-- xcodebuild build -scheme SwiftGraph -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6"
-- xcodebuild build -scheme SwiftGraphExample -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6"
+- xcodebuild build -scheme SwiftGraph -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 7"
