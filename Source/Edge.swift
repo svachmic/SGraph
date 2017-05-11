@@ -1,9 +1,9 @@
 //
-//  SEdge.swift
-//  SGraphExample
+//  Edge.swift
+//  SwiftGraph
 //
-//  Created by Michal Švácha on 22/10/14.
-//  Copyright (c) 2014 Michal Švácha. All rights reserved.
+//  Created by Michal Švácha on 22.10.14.
+//  Copyright © 2017 Michal Svacha. All rights reserved.
 //
 
 import Foundation
