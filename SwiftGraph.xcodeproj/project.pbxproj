@@ -10,12 +10,12 @@
 		E01D4F541EC499FB00E55C7A /* SwiftGraph.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E01D4F4A1EC499FB00E55C7A /* SwiftGraph.framework */; };
 		E01D4F591EC499FB00E55C7A /* SwiftGraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D4F581EC499FB00E55C7A /* SwiftGraphTests.swift */; };
 		E01D4F5B1EC499FB00E55C7A /* SwiftGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = E01D4F4D1EC499FB00E55C7A /* SwiftGraph.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E01D4F671EC49A5E00E55C7A /* SEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D4F641EC49A5E00E55C7A /* SEdge.swift */; };
-		E01D4F681EC49A5E00E55C7A /* SEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D4F641EC49A5E00E55C7A /* SEdge.swift */; };
-		E01D4F691EC49A5E00E55C7A /* SGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D4F651EC49A5E00E55C7A /* SGraph.swift */; };
-		E01D4F6A1EC49A5E00E55C7A /* SGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D4F651EC49A5E00E55C7A /* SGraph.swift */; };
-		E01D4F6B1EC49A5E00E55C7A /* SNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D4F661EC49A5E00E55C7A /* SNode.swift */; };
-		E01D4F6C1EC49A5E00E55C7A /* SNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D4F661EC49A5E00E55C7A /* SNode.swift */; };
+		E01D4F671EC49A5E00E55C7A /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D4F641EC49A5E00E55C7A /* Edge.swift */; };
+		E01D4F681EC49A5E00E55C7A /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D4F641EC49A5E00E55C7A /* Edge.swift */; };
+		E01D4F691EC49A5E00E55C7A /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D4F651EC49A5E00E55C7A /* Graph.swift */; };
+		E01D4F6A1EC49A5E00E55C7A /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D4F651EC49A5E00E55C7A /* Graph.swift */; };
+		E01D4F6B1EC49A5E00E55C7A /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D4F661EC49A5E00E55C7A /* Node.swift */; };
+		E01D4F6C1EC49A5E00E55C7A /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01D4F661EC49A5E00E55C7A /* Node.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +35,9 @@
 		E01D4F531EC499FB00E55C7A /* SwiftGraphTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftGraphTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E01D4F581EC499FB00E55C7A /* SwiftGraphTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGraphTests.swift; sourceTree = "<group>"; };
 		E01D4F5A1EC499FB00E55C7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E01D4F641EC49A5E00E55C7A /* SEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEdge.swift; sourceTree = "<group>"; };
-		E01D4F651EC49A5E00E55C7A /* SGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGraph.swift; sourceTree = "<group>"; };
-		E01D4F661EC49A5E00E55C7A /* SNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNode.swift; sourceTree = "<group>"; };
+		E01D4F641EC49A5E00E55C7A /* Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
+		E01D4F651EC49A5E00E55C7A /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		E01D4F661EC49A5E00E55C7A /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,9 +81,9 @@
 			isa = PBXGroup;
 			children = (
 				E01D4F4D1EC499FB00E55C7A /* SwiftGraph.h */,
-				E01D4F641EC49A5E00E55C7A /* SEdge.swift */,
-				E01D4F651EC49A5E00E55C7A /* SGraph.swift */,
-				E01D4F661EC49A5E00E55C7A /* SNode.swift */,
+				E01D4F641EC49A5E00E55C7A /* Edge.swift */,
+				E01D4F651EC49A5E00E55C7A /* Graph.swift */,
+				E01D4F661EC49A5E00E55C7A /* Node.swift */,
 				E01D4F4E1EC499FB00E55C7A /* Info.plist */,
 			);
 			path = Source;
@@ -209,9 +209,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E01D4F6B1EC49A5E00E55C7A /* SNode.swift in Sources */,
-				E01D4F691EC49A5E00E55C7A /* SGraph.swift in Sources */,
-				E01D4F671EC49A5E00E55C7A /* SEdge.swift in Sources */,
+				E01D4F6B1EC49A5E00E55C7A /* Node.swift in Sources */,
+				E01D4F691EC49A5E00E55C7A /* Graph.swift in Sources */,
+				E01D4F671EC49A5E00E55C7A /* Edge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,10 +219,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E01D4F6A1EC49A5E00E55C7A /* SGraph.swift in Sources */,
-				E01D4F681EC49A5E00E55C7A /* SEdge.swift in Sources */,
+				E01D4F6A1EC49A5E00E55C7A /* Graph.swift in Sources */,
+				E01D4F681EC49A5E00E55C7A /* Edge.swift in Sources */,
 				E01D4F591EC499FB00E55C7A /* SwiftGraphTests.swift in Sources */,
-				E01D4F6C1EC49A5E00E55C7A /* SNode.swift in Sources */,
+				E01D4F6C1EC49A5E00E55C7A /* Node.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
