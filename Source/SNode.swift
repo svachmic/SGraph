@@ -6,17 +6,27 @@
 //  Copyright (c) 2014 Michal Švácha. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class SNode: NSObject {
+class SNode: Hashable, Equatable {
     var isTraversed:Bool = false
-    var nodeID:Int;
+    var nodeID: Int
     
     init(nodeId:Int) {
-        nodeID = nodeId;
+        nodeID = nodeId
     }
     
-    override var description : String {
-        return String(nodeID)
+    var hashValue: Int {
+        get {
+            return "\(nodeID)".hashValue
+        }
+    }
+    
+    static func ==(lhs: SNode, rhs: SNode) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+    
+    var description : String {
+        return "\(nodeID)"
     }
 }

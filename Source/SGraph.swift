@@ -9,9 +9,9 @@
 import Foundation
 
 struct SGraphStep {
-    var from:SNode
-    var to:SNode
-    var length:Int
+    var from: SNode
+    var to: SNode
+    var length: Int
     
     var description: String {
         return "From \(from.nodeID) leading to \(to.nodeID) with length \(length)"
@@ -20,43 +20,39 @@ struct SGraphStep {
 
 class SGraph {
     var root: SNode?
-    var edges: Dictionary<SNode, [SEdge]> = Dictionary<SNode, [SEdge]>()
-    var nodes:NSMutableSet = NSMutableSet()
+    var edges = [SNode : [SEdge]]()
+    var nodes: Set<SNode> = []
     
-    func addEdge(from: SNode, to: SNode) {
+    func addEdge(from: SNode, to: SNode, edgeID: Int? = nil) {
         root = root ?? from
         
-        let newEdge = SEdge(destination: to, lng: 1, edgeId: 42)
+        let newEdge = SEdge(destination: to, length: 1, edgeID: edgeID ?? edges.count)
         
         if let destinations = edges[from] {
-            var tmp = destinations
-            tmp.append(newEdge)
-            edges[from] = tmp
+            edges[from] = destinations + [newEdge]
         } else {
-            var destinations = [SEdge]()
-            destinations.append(newEdge)
-            edges[from] = destinations
+            edges[from] = [newEdge]
         }
     }
     
     func addBidirectionalEdge(from: SNode, to: SNode) {
-        addEdge(from: from, to: to)
-        addEdge(from: to, to: from)
+        let edgeID = edges.count
+        addEdge(from: from, to: to, edgeID: edgeID)
+        addEdge(from: to, to: from, edgeID: edgeID)
 
-        self.addNode(from)
-        self.addNode(to)
+        add(node: from)
+        add(node: to)
     }
     
-    func addNode(_ node:SNode) {
-        nodes.add(node)
+    func add(node: SNode) {
+        nodes.insert(node)
         
         if edges[node] == nil {
-            let destinations = [SEdge]()
-            edges[node] = destinations
+            edges[node] = []
         }
     }
     
-    func nodeForID(_ nodeID: Int) -> SNode? {
+    func node(with nodeID: Int) -> SNode? {
         for (key, _) in edges {
             if key.nodeID == nodeID {
                 return key
@@ -66,8 +62,8 @@ class SGraph {
         return nil
     }
     
-    func edgeLengthFor(_ from:SNode, to:SNode) -> Int {
-        let result = edges[from]!.filter({ $0.destinationNode.nodeID == to.nodeID })
+    func edgeLength(from:SNode, to:SNode) -> Int {
+        let result = edges[from]!.filter({ $0.destination.nodeID == to.nodeID })
         return result.count == 0 ? Int.max : result[0].length
     }
     
@@ -79,29 +75,39 @@ class SGraph {
         return nil
     }
     
-    /**
-    Finds the shortest path between given nodes.
     
-    :param: from Starting node.
-    :param: to End node.
-    :returns: Optional array with SGraphStep objects. Nil if path has not been found.
-    */
+    /// Finds the shortest path between given nodes.
+    ///
+    /// - Parameter from: Starting node.
+    /// - Parameter to: End node.
+    /// - Returns: Optional array with SGraphStep objects. Nil if path has not been found.
     func shortestPath(from:SNode, to:SNode) -> [SGraphStep]? {
-        let keys: NSMutableSet = NSMutableSet(set: self.nodes)
+        let keys = NSMutableSet(set: self.nodes)
         var distances = [Int](repeating: Int.max, count: keys.count)
         var previous = [Int](repeating: Int.max, count: keys.count)
-        distances[from.nodeID] = 0
         
+        distances[from.nodeID] = 0
         var u = from
         
         while keys.count > 0 {
+            
+            for edge in self.edges[u]! {
+                let distance = distances[u.nodeID] + edge.length
+                if distance < distances[edge.destination.nodeID] {
+                    distances[edge.destination.nodeID] = distance
+                    previous[edge.destination.nodeID] = u.nodeID
+                }
+            }
+            
+            
+            /*
             _ = self.edges[u]?.map({ (edge: SEdge) -> Void in
                 let distance = distances[u.nodeID] + edge.length
-                if distance < distances[edge.destinationNode.nodeID] {
-                    distances[edge.destinationNode.nodeID] = distance
-                    previous[edge.destinationNode.nodeID] = u.nodeID
+                if distance < distances[edge.destination.nodeID] {
+                    distances[edge.destination.nodeID] = distance
+                    previous[edge.destination.nodeID] = u.nodeID
                 }
-            })
+            })*/
             
             keys.remove(u)
             
@@ -112,7 +118,7 @@ class SGraph {
             }
         }
         
-        var steps:[SGraphStep]? = [SGraphStep]()
+        var steps: [SGraphStep]? = []
         var previousIndex = to.nodeID
         
         while previousIndex != from.nodeID {
@@ -121,9 +127,12 @@ class SGraph {
                 break
             }
             
-            let from = nodeForID(previous[previousIndex])
-            let to = nodeForID(previousIndex)
-            let step = SGraphStep(from: from!, to: to!, length: distances[edgeLengthFor(from!, to: to!)])
+            let from = node(with: previous[previousIndex])
+            let to = node(with: previousIndex)
+            let step = SGraphStep(
+                from: from!,
+                to: to!,
+                length: distances[edgeLength(from: from!, to: to!)])
             steps!.insert(step, at: 0)
             
             previousIndex = previous[previousIndex]

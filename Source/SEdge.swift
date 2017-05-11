@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Michal Švácha. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class SEdge: NSObject {
-    var destinationNode:SNode
-    var length:Int
-    var edgeID:Int
+class SEdge {
+    var destination: SNode
+    var length: Int
+    var edgeID: Int
     
-    init(destination:SNode, lng:Int, edgeId:Int) {
-        destinationNode = destination
-        length = lng
-        edgeID = edgeId
+    init(destination: SNode, length: Int, edgeID: Int) {
+        self.destination = destination
+        self.length = length
+        self.edgeID = edgeID
     }
 }
