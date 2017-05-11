@@ -1,0 +1,13 @@
+platform :ios, '9.0'
+use_frameworks!
+
+target 'SwiftGraphExample' do
+  use_frameworks!
+
+  pod 'SwiftGraph', :path => "../"
+
+  target 'SwiftGraphExampleTests' do
+    inherit! :search_paths
+  end
+
+end
