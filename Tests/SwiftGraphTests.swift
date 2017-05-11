@@ -7,30 +7,65 @@
 //
 
 import XCTest
-@testable import SwiftGraph
 
 class SwiftGraphTests: XCTestCase {
+    var graph: SGraph!
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        graph = SGraph()
+        
+        let node1 = SNode(nodeId: 0)
+        let node2 = SNode(nodeId: 1)
+        let node3 = SNode(nodeId: 2)
+        let node4 = SNode(nodeId: 3)
+        let node5 = SNode(nodeId: 4)
+        let node6 = SNode(nodeId: 5)
+        
+        graph.addBidirectionalEdge(from: node1, to: node2)
+        graph.addBidirectionalEdge(from: node1, to: node3)
+        graph.addBidirectionalEdge(from: node2, to: node4)
+        graph.addBidirectionalEdge(from: node4, to: node5)
+        graph.addBidirectionalEdge(from: node3, to: node6)
+        
+        // lonely node
+        let node7 = SNode(nodeId: 6)
+        graph.add(node: node7)
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testNodePresence() {
+        XCTAssertNotNil(graph.node(with: 0))
+        XCTAssertNotNil(graph.node(with: 1))
+        XCTAssertNotNil(graph.node(with: 2))
+        XCTAssertNotNil(graph.node(with: 3))
+        XCTAssertNotNil(graph.node(with: 4))
+        XCTAssertNotNil(graph.node(with: 5))
+        XCTAssertNotNil(graph.node(with: 6))
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testForwardPath() {
+        let node1 = graph.node(with: 0)!
+        let node6 = graph.node(with: 5)!
+        
+        XCTAssertNotNil(graph.shortestPath(from: node1, to: node6))
     }
     
+    func testBackwardPath() {
+        let node1 = graph.node(with: 0)!
+        let node4 = graph.node(with: 3)!
+        
+        XCTAssertNotNil(graph.shortestPath(from: node4, to: node1))
+    }
+    
+    func testNoPath() {
+        let node1 = graph.node(with: 0)!
+        let node7 = graph.node(with: 6)!
+        
+        XCTAssertNil(graph.shortestPath(from: node1, to: node7))
+    }
 }
