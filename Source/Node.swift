@@ -9,7 +9,6 @@
 import Foundation
 
 class Node: Hashable, Equatable {
-    var isTraversed = false
     var nodeID: Int
     
     init(nodeId: Int) {
