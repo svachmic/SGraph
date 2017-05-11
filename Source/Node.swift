@@ -9,7 +9,7 @@
 import Foundation
 
 class Node: Hashable, Equatable {
-    var isTraversed:Bool = false
+    var isTraversed = false
     var nodeID: Int
     
     init(nodeId: Int) {
@@ -17,16 +17,14 @@ class Node: Hashable, Equatable {
     }
     
     var hashValue: Int {
-        get {
-            return "\(nodeID)".hashValue
-        }
+        return "\(nodeID)".hashValue
     }
     
-    static func ==(lhs: Node, rhs: Node) -> Bool {
+    static func == (lhs: Node, rhs: Node) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
     
-    var description : String {
+    var description: String {
         return "\(nodeID)"
     }
 }

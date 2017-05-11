@@ -20,7 +20,7 @@ struct GraphStep {
 
 class Graph {
     var root: Node?
-    var edges = [Node : [Edge]]()
+    var edges = [Node: [Edge]]()
     var nodes: Set<Node> = []
     
     func addEdge(from: Node, to: Node, edgeID: Int? = nil) {
@@ -53,10 +53,8 @@ class Graph {
     }
     
     func node(with nodeID: Int) -> Node? {
-        for (key, _) in edges {
-            if key.nodeID == nodeID {
-                return key
-            }
+        for (key, _) in edges where key.nodeID == nodeID {
+            return key
         }
         
         return nil
@@ -74,7 +72,6 @@ class Graph {
     func eulerianPath() -> Graph? {
         return nil
     }
-    
     
     /// Finds the shortest path between given nodes.
     ///
@@ -98,16 +95,6 @@ class Graph {
                     previous[edge.destination.nodeID] = u.nodeID
                 }
             }
-            
-            
-            /*
-            _ = self.edges[u]?.map({ (edge: SEdge) -> Void in
-                let distance = distances[u.nodeID] + edge.length
-                if distance < distances[edge.destination.nodeID] {
-                    distances[edge.destination.nodeID] = distance
-                    previous[edge.destination.nodeID] = u.nodeID
-                }
-            })*/
             
             keys.remove(u)
             
