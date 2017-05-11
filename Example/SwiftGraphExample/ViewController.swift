@@ -2,14 +2,15 @@
 //  ViewController.swift
 //  SwiftGraphExample
 //
-//  Created by Michal Švácha on 10/04/15.
-//  Copyright (c) 2015 Michal Švácha. All rights reserved.
+//  Created by Michal Švácha on 10.04.15.
+//  Copyright © 2017 Michal Svacha. All rights reserved.
 //
 
 import UIKit
+import SwiftGraph
 
 class ViewController: UIViewController {
-    var graph:SGraph!
+    var graph: Graph!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,18 +22,18 @@ class ViewController: UIViewController {
     }
     
     func testShortestPath() {
-        self.graph = SGraph()
+        self.graph = Graph()
         
-        let node1 = SNode(nodeId: 0)
-        let node2 = SNode(nodeId: 1)
-        let node3 = SNode(nodeId: 2)
-        let node4 = SNode(nodeId: 3)
-        let node5 = SNode(nodeId: 4)
-        let node6 = SNode(nodeId: 5)
+        let node1 = Node(nodeID: 0)
+        let node2 = Node(nodeID: 1)
+        let node3 = Node(nodeID: 2)
+        let node4 = Node(nodeID: 3)
+        let node5 = Node(nodeID: 4)
+        let node6 = Node(nodeID: 5)
         
         // lonely node
-        let node7 = SNode(nodeId: 6)
-        self.graph.addNode(node7)
+        let node7 = Node(nodeID: 6)
+        self.graph.add(node: node7)
         
         self.graph.addBidirectionalEdge(from: node1, to: node2)
         self.graph.addBidirectionalEdge(from: node1, to: node3)
@@ -50,7 +51,7 @@ class ViewController: UIViewController {
         self.findPath(node1, to: node7)
     }
     
-    func findPath(_ from:SNode, to:SNode) {
+    func findPath(_ from: Node, to: Node) {
         if let trail = self.graph.shortestPath(from: from, to: to) {
             _ = trail.map({ print("\($0.description)") })
             print()

@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  SwiftGraphExample
 //
-//  Created by Michal Švácha on 10/04/15.
-//  Copyright (c) 2015 Michal Švácha. All rights reserved.
+//  Created by Michal Švácha on 10.04.15.
+//  Copyright © 2017 Michal Svacha. All rights reserved.
 //
 
 import UIKit
