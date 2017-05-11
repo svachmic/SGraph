@@ -1,20 +1,25 @@
-#SwiftGraph#
+# SwiftGraph
 
 [![Build Status](https://travis-ci.org/svachmic/SwiftGraph.svg?branch=master)](https://travis-ci.org/svachmic/SwiftGraph)
 
-Graph algorithms implemented in pure Swift (Apple's new language).
+Graph algorithms implemented in Swift.
 
-##Implemented algorithms##
-- Dijkstra
+## Implemented algorithms
 
-##TODO##
-- Kruskall
-- Fleury
-- Edmonds
-- Tarjan
+- [x] Dijkstra
+- [ ] Kruskall
+- [ ] Fleury
+- [ ] Edmonds
+- [ ] Tarjan
 
-##Usage
+## Usage
+
 TBD
 
-##License##
+## Installation
+
 TBD
+
+## License
+
+SwiftGraph is released under the MIT license. [See LICENSE](https://github.com/svachmic/SwiftGraph/blob/master/LICENSE) for details.
