@@ -1,9 +1,14 @@
 language: objective-c
 osx_image: xcode8.3.2
 
+podfile: Example/Podfile
+
 before_install:
   - brew install swiftlint || true
+  - gem install cocoapods
+  - pod install --project-directory=Example
  
 script:
   - swiftlint
-  - xcodebuild build -scheme SwiftGraph -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 7"
+  - set -o pipefail && xcodebuild test -workspace Example/SwiftGraph.xcworkspace -scheme SwiftGraph-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
+  - pod lib lint
